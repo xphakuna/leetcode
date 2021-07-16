@@ -25,5 +25,39 @@ namespace leetcode_compile
             }
             return -1;
         }
+
+        public static void Test_FindBiggerThan()
+        {
+            int ret = 0;
+            ret = FindBiggerThan(new List<int>(new int[]{ 1, 2, 4, 4, 7 }), 0, 3, (a) => { return a; });
+            System.Diagnostics.Debug.Assert(ret == 2);
+            ret = FindBiggerThan(new List<int>(new int[] { 1, 2, 4, 4, 7 }), 0, 4, (a) => { return a; });
+            System.Diagnostics.Debug.Assert(ret == 4);
+            ret = FindBiggerThan(new List<int>(new int[] { 1, 2, 4, 4, 7 }), 0, 999, (a) => { return a; });
+            System.Diagnostics.Debug.Assert(ret == -1);
+
+            ret = FindBiggerThan(new List<int>(new int[] { 1, 2, 4, 4, 7 }), 1, 1, (a) => { return a; });
+            System.Diagnostics.Debug.Assert(ret == 1);
+        }
+
+        public static int FindEqualBiggerThan<T>(IList<T> newp, int idx_start, int n, System.Func<T, int> calc)
+        {
+            int ret = FindBiggerThan(newp, idx_start, n - 1, calc);
+            return ret;
+        }
+
+        public static void Test_FindEqualBiggerThan()
+        {
+            int ret = 0;
+            ret = FindEqualBiggerThan(new List<int>(new int[] { 1, 2, 4, 4, 7 }), 0, 3, (a) => { return a; });
+            System.Diagnostics.Debug.Assert(ret == 2);
+            ret = FindEqualBiggerThan(new List<int>(new int[] { 1, 2, 4, 4, 7 }), 0, 4, (a) => { return a; });
+            System.Diagnostics.Debug.Assert(ret == 2);
+            ret = FindEqualBiggerThan(new List<int>(new int[] { 1, 2, 4, 4, 7 }), 0, 999, (a) => { return a; });
+            System.Diagnostics.Debug.Assert(ret == -1);
+
+            ret = FindEqualBiggerThan(new List<int>(new int[] { 1, 2, 4, 4, 7 }), 1, 1, (a) => { return a; });
+            System.Diagnostics.Debug.Assert(ret == 1);
+        }
     }
 }

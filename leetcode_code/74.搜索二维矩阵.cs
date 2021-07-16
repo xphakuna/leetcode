@@ -1,7 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+/*
+ * @lc app=leetcode.cn id=74 lang=csharp
+ *
+ * [74] 搜索二维矩阵
+ */
 
-
+// @lc code=start
 public class Solution
 {
     public static int FindBiggerThan<T>(IList<T> newp, int idx_start, int n, System.Func<T, int> calc)
@@ -55,40 +58,5 @@ public class Solution
         return front_end[idx] == target;
     }
 }
+// @lc code=end
 
-namespace leetcode_compile
-{
-    class Program
-    {
-        static int[][] parseParam(string str)
-        {
-            var lines = str.Split("],[");
-            List<int[]> ret = new List<int[]>();
-            for (int i=0; i<lines.Length; i++)
-            {
-                var tline = lines[i].Split(",".ToCharArray());
-                int[] oneline = new int[tline.Length];
-                for (int j=0; j<tline.Length; j++)
-                {
-                    int tmp = 0;
-                    if (!int.TryParse(tline[j], out tmp))
-                    {
-                        System.Diagnostics.Debug.WriteLine("bad parse " + tline[j]);
-                    }
-                    oneline[j] = tmp;
-                }
-                ret.Add(oneline);
-            }
-            return ret.ToArray();
-        }
-        static void Main(string[] args)
-        {
-            Utils.Test_FindBiggerThan();
-            Utils.Test_FindEqualBiggerThan();
-
-            Solution s = new Solution();
-            var ret = s.SearchMatrix(parseParam("1,3,5,7],[10,11,16,20],[23,30,34,60"), 13);
-            Console.WriteLine("Hello World!");
-        }
-    }
-}
